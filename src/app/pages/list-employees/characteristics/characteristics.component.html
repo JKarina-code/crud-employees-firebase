@@ -1,0 +1,9 @@
+<label for="item-input">Add a characteristic:</label>
+<input type="text" #newCharact name="newCharact" />
+<button
+  type="button"
+  class="btn btn-success mt-3"
+  (click)="addNewCharact(newCharact.value)"
+>
+  Add
+</button>

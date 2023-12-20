@@ -1,0 +1,51 @@
+<div class="container p-2 mt-4">
+  <form class="form-group row" [formGroup]="formAdd" (ngSubmit)="AddEmployee()">
+    <div class="form-group col-md-3">
+      <label for="cpersonName">Name</label>
+      <input
+        type="text"
+        name="cpersonName"
+        placeholder="Name"
+        class="form-control"
+        formControlName="cpersonName"
+      />
+    </div>
+    <div class="form-group col-md-3">
+      <label for="clastName">LastName</label>
+      <input
+        type="text"
+        name="clastName"
+        placeholder="LastName"
+        class="form-control"
+        formControlName="clastName"
+      />
+    </div>
+    <div class="form-group col-md-3">
+      <label for="cposition">Position</label>
+      <input
+        type="text"
+        name="cposition"
+        placeholder="Position"
+        class="form-control"
+        formControlName="cposition"
+      />
+    </div>
+    <div class="form-group col-md-3">
+      <label for="csalary">Salary</label>
+      <input
+        type="number"
+        name="csalary"
+        placeholder="salary"
+        class="form-control"
+        formControlName="csalary"
+      />
+    </div>
+    <button type="submit" class="btn btn-success" style="margin-top: 15px">
+      Send
+    </button>
+  </form>
+  <br /><br /><br />
+</div>
+<div class="text-center">
+  <button class="btn btn-primary" (click)="goHome()">Go Home</button>
+</div>

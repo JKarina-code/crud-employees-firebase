@@ -1,0 +1,32 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col">
+      <div class="card p-4 m-2" style="width: 18rem">
+        <a [routerLink]="['/updateEmployee', index]">
+          <span [style]="style">Edit</span>
+        </a>
+
+        <h3>{{ employee.personName }} {{ employee.lastName }}</h3>
+
+        <div class="card-body">
+          <p class="card-text">position: {{ employee.position }}</p>
+          <span>salary: {{ employee.salary }}</span>
+        </div>
+        <div>
+          <h3>Characteristics</h3>
+          <app-characteristics
+            (newCharactEvent)="addCharact($event)"
+          ></app-characteristics>
+
+          <ul style="list-style: none">
+            <li *ngFor="let charact of characteristics">{{ charact }}</li>
+          </ul>
+        </div>
+        <hr />
+        <button type="submit" class="btn btn-danger" (click)="deleteData()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

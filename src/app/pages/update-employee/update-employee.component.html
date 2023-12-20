@@ -1,0 +1,41 @@
+<div class="container p-2 mt-4">
+  <form class="form-group" [formGroup]="form" (ngSubmit)="updateData()">
+    <h3>Change your data</h3>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Change your name"
+      name="cpersonName"
+      formControlName="cpersonName"
+    />
+    <input
+      class="form-control my-3"
+      type="text"
+      name="clastName"
+      placeholder="Change your lastName"
+      formControlName="clastName"
+    />
+    <input
+      class="form-control"
+      type="text"
+      name="cposition"
+      placeholder="Change your position"
+      formControlName="cposition"
+    />
+    <input
+      class="form-control my-3"
+      type="text"
+      name="csalary"
+      placeholder="Change your salary"
+      formControlName="csalary"
+    />
+
+    <button type="submit" class="btn btn-primary" style="margin-right: 35px">
+      Send
+    </button>
+  </form>
+  <br /><br /><br />
+</div>
+<div class="text-center">
+  <button class="btn btn-primary" (click)="goHome()">Go Home</button>
+</div>
