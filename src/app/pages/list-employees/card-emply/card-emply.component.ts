@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Employee } from '../../../model/empleado.model';
+import { Employee } from '../../../model/employee.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeesService } from 'src/app/service/employees.service';
 @Component({
@@ -9,8 +9,7 @@ import { EmployeesService } from 'src/app/service/employees.service';
 })
 export class CardEmplyComponent implements OnInit {
   @Input() employee: Employee;
-  @Input() index: number;
-
+  @Input() id:string;
   style = {
     cursor: 'pointer',
     height: '30px',
@@ -28,10 +27,8 @@ export class CardEmplyComponent implements OnInit {
     this.characteristics.push(newCharact);
   }
 
-  deleteData() {
-    this.myService.deleteEmployee(this.index);
-    let employee = this.employee.personName;
-    alert(`Employed : ${employee} deleted`);
-    this.router.navigate(['/']);
+  deleteData(employee: Employee) {
+    let decision = confirm(`Are you sure want to delete to:  ${employee.personName}?`)
+    decision && this.myService.deleteEmployee(employee);
   }
 }

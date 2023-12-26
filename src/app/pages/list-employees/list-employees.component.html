@@ -1,5 +1,5 @@
 <app-card-emply
-  *ngFor="let employee of listEmployess; let i = index"
+  *ngFor="let employee of listEmployess"
   [employee]="employee"
-  [index]="i"
+  [id] = "employee.id"
 ></app-card-emply>

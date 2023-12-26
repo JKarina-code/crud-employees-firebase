@@ -1,43 +1,47 @@
-import { Injectable } from '@angular/core';
-import { Employee } from '../model/empleado.model';
+import { Injectable, inject } from '@angular/core';
+import { Employee } from '../model/employee.model';
+import {
+  Firestore,
+  addDoc,
+  doc,
+  collection,
+  collectionData,
+  updateDoc,
+  deleteDoc,
+} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeesService {
+  fs: Firestore = inject(Firestore);
   constructor() {}
-  //Employee Service
-  employess: Employee[] = [
-    new Employee('Jymma', 'Mogollon', 'developer', 3500),
-    new Employee('Ana', 'Tavra', 'president', 5500),
-    new Employee('Maria', 'Fernadez', 'UI', 7500),
-    new Employee('Laura', 'Lopez', 'president', 2500),
-  ];
-
-  addEmployeeService(employee: Employee) {
-    this.employess.unshift(employee);
-  }
-
-  //Alert
+  // Alert
   showAlert(msg: string) {
     alert(msg);
   }
-  // Employee with your index
-  findEmployee(index: number) {
-    let employee: Employee = this.employess[index];
-    return employee;
+  // Add employee
+  addEmployeeService(employee: Employee) {
+    employee.id = doc(collection(this.fs, 'id')).id;
+    return addDoc(collection(this.fs, 'Employees'), employee);
+  }
+  // Get all employees
+  getEmployees(): Observable<Employee[]> {
+    const employeesCollection = collection(this.fs, 'Employees');
+    return collectionData(employeesCollection, { idField: 'id' }) as Observable<
+      Employee[]
+    >;
   }
 
-  updateEmployee(index: number, upEmployee: Employee) {
-    let employeeChanged = this.employess[index];
-
-    employeeChanged.personName = upEmployee.personName;
-    employeeChanged.lastName = upEmployee.lastName;
-    employeeChanged.position = upEmployee.position;
-    employeeChanged.salary = upEmployee.salary;
+  //Update Employee
+  updateEmployee(employee: Employee, upEmployee: any) {
+    let employeeRef = doc(this.fs, `Employees/${employee.id}`);
+    return updateDoc(employeeRef, upEmployee);
   }
-
-  deleteEmployee(index: number) {
-    this.employess.splice(index, 1);
+  //Delete Employee
+  deleteEmployee(employee: Employee) {
+    let employeeRef = doc(this.fs, `Employees/${employee.id}`);
+    return deleteDoc(employeeRef);
   }
 }

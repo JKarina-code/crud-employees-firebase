@@ -9,7 +9,10 @@ import { EmployeesService } from './service/employees.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppRoutingModule } from './app.routing.module';
 import { EmployeesListComponent } from './pages/list-employees/list-employees.component';
-
+//Firebase
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../environment/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,13 @@ import { EmployeesListComponent } from './pages/list-employees/list-employees.co
     CharacteristicsComponent,
     NavbarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+  ],
   providers: [EmployeesService],
   bootstrap: [AppComponent],
 })
