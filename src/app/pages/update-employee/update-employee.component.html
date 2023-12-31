@@ -1,33 +1,33 @@
 <div class="container p-2 mt-4">
-  <form class="form-group" [formGroup]="form" (ngSubmit)="updateData()">
+  <form class="form-group" [formGroup]="editForm" (ngSubmit)="updateData(employeeDetails?.id)">
     <h3>Change your data</h3>
     <input
       class="form-control"
       type="text"
       placeholder="Change your name"
-      name="cpersonName"
-      formControlName="cpersonName"
+      name="upersonName"
+      formControlName="upersonName"
     />
     <input
       class="form-control my-3"
       type="text"
-      name="clastName"
+      name="ulastName"
       placeholder="Change your lastName"
-      formControlName="clastName"
+      formControlName="ulastName"
     />
     <input
       class="form-control"
       type="text"
-      name="cposition"
+      name="uposition"
       placeholder="Change your position"
-      formControlName="cposition"
+      formControlName="uposition"
     />
     <input
       class="form-control my-3"
       type="text"
-      name="csalary"
+      name="usalary"
       placeholder="Change your salary"
-      formControlName="csalary"
+      formControlName="usalary"
     />
 
     <button type="submit" class="btn btn-primary" style="margin-right: 35px">

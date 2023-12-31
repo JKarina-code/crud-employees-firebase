@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Employee } from '../model/employee.model';
+import { Employee } from '../../model/employee.model';
 import {
   Firestore,
   addDoc,
@@ -21,6 +21,8 @@ export class EmployeesService {
   showAlert(msg: string) {
     alert(msg);
   }
+
+
   // Add employee
   addEmployeeService(employee: Employee) {
     employee.id = doc(collection(this.fs, 'id')).id;
@@ -35,9 +37,9 @@ export class EmployeesService {
   }
 
   //Update Employee
-  updateEmployee(employee: Employee, upEmployee: any) {
-    let employeeRef = doc(this.fs, `Employees/${employee.id}`);
-    return updateDoc(employeeRef, upEmployee);
+  editEmployee(employee: Employee, employees:any) {
+    let employeeEdit = doc(this.fs, `Employees/${employee.id}`);
+    return updateDoc(employeeEdit, employees);
   }
   //Delete Employee
   deleteEmployee(employee: Employee) {

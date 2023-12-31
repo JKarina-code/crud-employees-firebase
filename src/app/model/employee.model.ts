@@ -5,3 +5,5 @@ export interface Employee {
   position: string;
   salary: number;
 }
+
+

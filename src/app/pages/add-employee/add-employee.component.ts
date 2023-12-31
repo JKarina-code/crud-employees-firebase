@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Employee } from '../../model/employee.model';
-import { EmployeesService } from 'src/app/service/employees.service';
+import { EmployeesService } from 'src/app/core/service/employees.service';
 import {
   FormBuilder,
   FormGroup,

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Employee } from '../../../model/employee.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeesService } from 'src/app/service/employees.service';
+import { EmployeesService } from 'src/app/core/service/employees.service';
 @Component({
   selector: 'app-card-emply',
   templateUrl: './card-emply.component.html',

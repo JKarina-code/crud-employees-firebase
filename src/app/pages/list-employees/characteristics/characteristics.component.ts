@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { EmployeesService } from 'src/app/service/employees.service';
+import { EmployeesService } from 'src/app/core/service/employees.service';
 @Component({
   selector: 'app-characteristics',
   templateUrl: './characteristics.component.html',
